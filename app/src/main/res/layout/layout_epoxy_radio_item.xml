@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="optionEntity"
+            type="com.radiusagent.domain.model.entities.OptionEntity" />
+
+        <variable
+            name="buttonText"
+            type="String" />
+
+        <variable
+            name="isChecked"
+            type="Boolean" />
+
+        <variable
+            name="isEnabled"
+            type="Boolean" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="color"
+            type="android.graphics.Color" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:selectableItemBackground"
+        android:background="@{isEnabled? isChecked ? @color/green_A50 :@color/white :@color/white}">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:padding="@dimen/_4sdp"
+            android:scaleType="centerCrop"
+            android:alpha="@{isEnabled ? 1f :0.6f}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/radio_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <RadioButton
+            android:id="@+id/radio_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:button="@null"
+            android:checked="@{isEnabled ? isChecked :false}"
+            android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+            android:drawablePadding="@dimen/_10sdp"
+            android:enabled="@{isEnabled}"
+            android:fontFamily="@font/cantata_one"
+            android:onClick="@{onClick}"
+            android:text="@{buttonText}"
+            android:textColor="@{ isEnabled? @color/text_enabled:@color/text_disabled}"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Apartment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

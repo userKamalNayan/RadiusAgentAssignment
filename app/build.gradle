@@ -1,0 +1,96 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '../dependencies.gradle'
+android {
+    namespace 'com.radiusagent.android'
+    compileSdk project.ext.compileSdk
+
+    defaultConfig {
+        applicationId "com.radiusagent.android"
+        minSdk 24
+        targetSdk project.ext.targetSdk
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
+        buildConfigField 'String', "BASE_URL", "\"https://my-json-server.typicode.com/\""
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    kapt {
+        correctErrorTypes true
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
+    implementation project(path: ':commons')
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation androidx.coreKtx
+    implementation androidx.appCompat
+    implementation androidx.constraintlayout
+    implementation androidx.lifecycleExt
+    implementation google.material
+    implementation androidx.activityKtx
+
+    // LIVEDATA
+    implementation androidx.lifecycleLiveData
+
+    // VIEW MODEL
+    implementation androidx.lifecycleViewModel
+
+    // IMAGE LOADER
+    implementation image.glide
+    kapt image.glideCompiler
+
+    //Scalable DP + SP
+    implementation others.sdp
+    implementation others.ssp
+
+    // EPOXY
+    implementation views.epoxyRecyclerView
+    implementation views.epoxyDataBinding
+    kapt views.epoxyProcessor
+
+    //DI Hilt
+    implementation hilt.hiltAndroid
+    kapt hilt.kaptHiltAndroidCompiler
+
+    //WORK MANAGER
+    implementation androidx.workManager
+
+    api androidx.roomDb
+    api androidx.roomKtx
+    kapt androidx.kaptRoomDb
+
+    implementation "androidx.work:work-testing:2.8.1"
+
+}
