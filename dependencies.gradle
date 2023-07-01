@@ -125,7 +125,4 @@ ext {
             glideCompiler: "com.github.bumptech.glide:compiler:$glideVersion",
     ]
 
-    crashLoggers = [
-            crashlytics: "com.google.firebase:firebase-crashlytics-ktx"
-    ]
 }

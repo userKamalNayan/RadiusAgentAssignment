@@ -2,6 +2,7 @@ package com.radiusagent.android.ui.app
 
 import android.app.Application
 import com.radiusagent.android.BuildConfig
+import com.radiusagent.commons.timber.CrashlyticsLogTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -17,9 +18,8 @@ class RadiusAgent : Application() {
     private fun initDebuggingTools() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
-        }
-        else{
-            // will implement release tree
+        } else {
+            Timber.plant(CrashlyticsLogTree())
         }
     }
 }
