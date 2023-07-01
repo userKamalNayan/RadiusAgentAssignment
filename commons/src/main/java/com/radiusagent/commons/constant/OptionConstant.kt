@@ -13,19 +13,3 @@ object OptionConstant {
     const val GARDEN = "garden"
     const val GARAGE = "garage"
 }
-/**
-"name":"Swimming Pool",
-"icon":"swimming",
-"id":"10"
-},
-{
-"name":"Garden Area",
-"icon":"garden",
-"id":"11"
-},
-{
-"name":"Garage",
-"icon":"garage",
-"id":"12"
-}
- */
