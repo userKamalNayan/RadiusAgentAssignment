@@ -121,6 +121,7 @@ class RefreshDataWorker(
         notificationBuilderCompat.apply {
             setContentTitle("Refreshing Facilities")
             priority = NotificationCompat.PRIORITY_LOW
+            setSmallIcon(R.drawable.app_logo)
             setAutoCancel(true)
             setOngoing(true)
             setOnlyAlertOnce(true)
