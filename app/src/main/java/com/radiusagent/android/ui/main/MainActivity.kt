@@ -16,7 +16,7 @@ import com.radiusagent.android.radioItem
 import com.radiusagent.android.titleItem
 import com.radiusagent.android.worker.RefreshDataWorker
 import com.radiusagent.commons.constant.OptionConstant
-import com.radiusagent.commons.extension.Emtpy
+import com.radiusagent.commons.extension.Empty
 import com.radiusagent.domain.model.entities.ExclusionEntity
 import com.radiusagent.domain.model.entities.FacilityEntity
 import com.radiusagent.domain.model.response.FacilityResponse
@@ -188,7 +188,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     val entry =
                         selectedOptionsMap.entries.find { it.value == exclusionPairMap[selectedOptionId] }
                             ?: return
-                    selectedOptionsMap[entry.key] = String.Emtpy
+                    selectedOptionsMap[entry.key] = String.Empty
                 }
             }
         }
